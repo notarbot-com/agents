@@ -939,7 +939,7 @@ async def _execute_tools_task(
 
             # write canonical JSON back so subsequent LLM turns see valid JSON
             # even if the original was repaired
-            canonical = json.dumps(raw_args, default=str)
+            canonical = json.dumps(raw_args, default=str, ensure_ascii=False)
             if canonical != json_args:
                 fnc_call.arguments = canonical
 

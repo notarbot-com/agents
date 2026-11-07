@@ -647,7 +647,7 @@ def prepare_function_arguments(
         # write canonical BEFORE validation so a downstream validation failure
         # still leaves valid JSON in chat history
         if fnc_call is not None:
-            canonical = json.dumps(args_dict, default=str)
+            canonical = json.dumps(args_dict, default=str, ensure_ascii=False)
             if canonical != json_arguments:
                 fnc_call.arguments = canonical
 
